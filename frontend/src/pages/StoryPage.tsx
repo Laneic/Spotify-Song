@@ -179,13 +179,14 @@ export default function StoryPage({ accessToken, onLogout }: StoryPageProps) {
         </button>
       </header>
 
-      {view === 'upload' && <section className="story-intro">
-        <p className="eyebrow">YOUR STORY, IN ANOTHER MEDIUM</p>
-        <h1>Find the feeling.<br />Then find the music.</h1>
-        <p className="intro-copy">Start with a story. We will trace its emotional arc and shape it into a musical direction.</p>
-      </section>}
+      {view === 'upload' && <div className="upload-layout">
+        <section className="story-intro">
+          <p className="eyebrow">YOUR STORY, IN ANOTHER MEDIUM</p>
+          <h1>Find the feeling.<br />Then find the music.</h1>
+          <p className="intro-copy">Start with a story. We will trace its emotional arc and shape it into a musical direction.</p>
+        </section>
 
-      {view === 'upload' && <div className="story-workspace">
+        <div className="story-workspace">
         <section className="upload-panel" aria-labelledby="upload-title">
           <div className="panel-heading">
             <span className="step-number">01</span>
@@ -236,22 +237,7 @@ export default function StoryPage({ accessToken, onLogout }: StoryPageProps) {
           <p className="privacy-note">Files are analyzed in memory and are not saved by this app. Story text is sent to Google Gemini for analysis.</p>
         </section>
 
-        <section className="analysis-panel" aria-labelledby="analysis-title" aria-live="polite">
-          <div className="panel-heading">
-            <span className="step-number">02</span>
-            <h2 id="analysis-title">Story reading</h2>
-          </div>
-
-          {analysis ? (
-            <AnalysisResults analysis={analysis} />
-          ) : (
-            <div className="analysis-empty">
-              <span className="empty-orbit" aria-hidden="true">♪</span>
-              <p>{isAnalyzing ? 'Listening for the shape of the story...' : 'Your story analysis will appear here.'}</p>
-              <span>SUMMARY · TONE · GENRE · MOOD</span>
-            </div>
-          )}
-        </section>
+        </div>
       </div>}
 
       {view === 'choice' && analysis && (
